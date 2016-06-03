@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleCode", "SampleCode\SampleCode.csproj", "{E3084873-C4A8-48D0-8051-B24C2820A05C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Regex", "Regex\Regex.csproj", "{255240F7-A0C1-43A7-A0F1-2BA2D14E0846}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lambda", "Lambda\Lambda.csproj", "{1D33854A-0442-449A-A275-193ABD557D69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E3084873-C4A8-48D0-8051-B24C2820A05C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E3084873-C4A8-48D0-8051-B24C2820A05C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E3084873-C4A8-48D0-8051-B24C2820A05C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E3084873-C4A8-48D0-8051-B24C2820A05C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{255240F7-A0C1-43A7-A0F1-2BA2D14E0846}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{255240F7-A0C1-43A7-A0F1-2BA2D14E0846}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{255240F7-A0C1-43A7-A0F1-2BA2D14E0846}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{255240F7-A0C1-43A7-A0F1-2BA2D14E0846}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D33854A-0442-449A-A275-193ABD557D69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D33854A-0442-449A-A275-193ABD557D69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D33854A-0442-449A-A275-193ABD557D69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D33854A-0442-449A-A275-193ABD557D69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
