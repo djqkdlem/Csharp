@@ -54,7 +54,18 @@ Global
 		{938749CA-EE76-47DC-9A8D-7C3CA1BCBD9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{938749CA-EE76-47DC-9A8D-7C3CA1BCBD9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{938749CA-EE76-47DC-9A8D-7C3CA1BCBD9A}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 >>>>>>> dev
+=======
+		{09E4AED0-A2E2-481C-BD55-91B7642BC195}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09E4AED0-A2E2-481C-BD55-91B7642BC195}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09E4AED0-A2E2-481C-BD55-91B7642BC195}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09E4AED0-A2E2-481C-BD55-91B7642BC195}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E0BA4FF-8C21-4553-A17F-16A532BC1986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E0BA4FF-8C21-4553-A17F-16A532BC1986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E0BA4FF-8C21-4553-A17F-16A532BC1986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E0BA4FF-8C21-4553-A17F-16A532BC1986}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> b4d35ed413b0ac2a648940819d2de9f1bc51401b
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
