@@ -9,14 +9,21 @@ namespace Lambda
     class Program
     {
 
-        //타입
+        // 타입
         public class Info
         {
             public string name { get; set; }
             public int[] score { get; set; }
         }
 
-        //배열
+        // 타입
+        public class Person
+        {
+            public string sex { get; set; }
+            public string name { get; set; }
+        }
+
+        // 배열
         static Info[] infoArr =
         {
             new Info(){name="아라", score=new int[]{88,75,190,67}},
@@ -24,11 +31,20 @@ namespace Lambda
             new Info(){name="현아", score=new int[]{89,87,68,22}}
         };
 
-        //리스트
+        // 리스트
         static List<Info> infoList = new List<Info>()
         {
             new Info(){name="AAA",score=new int[]{142,2,3}},
             new Info(){name="BBB",score=new int[]{1,2,3}}
+        };
+
+        // 리스트
+        static List<Person> personList = new List<Person>
+        {
+            new Person() { sex = "여자", name = "아라" },
+            new Person() { sex = "남자", name = "쓰레기" },
+            new Person() { sex = "여자", name = "민희" },
+            new Person() { sex = "남자", name = "삼천포" },
         };
 
 
@@ -52,7 +68,7 @@ namespace Lambda
             Console.WriteLine(result.Single());
           
 
-
+            //
             IEnumerable <Info> rs = from lInfo in infoList
                          where lInfo.name.Contains("AAA")
                          select lInfo;
@@ -61,6 +77,50 @@ namespace Lambda
                 Console.WriteLine(i.score[0]);
             }
 
+            //
+            var inf = from i in infoList
+                      where i.name =="AAA"
+                      select new
+                      {
+                          Name = i.name,
+                          Score = i.score[0]
+                      };
+
+            foreach (var item in inf)
+            {
+                Console.WriteLine(item);
+            }
+
+            // group
+            var Group = from person in personList
+                        group person by person.sex == "남자" into data
+                        //select personList;
+                        select new
+                        {
+                            sexCheck = data.Key,
+                            Person = data
+                        };
+
+            foreach (var item in Group)
+            {
+
+                if (item.sexCheck)
+                {
+                    Console.WriteLine("남자들");
+                    foreach (var i in item.Person)
+                    {
+                        Console.WriteLine("이름 : "+i.name);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("여자들");
+                    foreach (var i in item.Person)
+                    {
+                        Console.WriteLine("이름 : " + i.name);
+                    }
+                }
+            }
         }
     }
 }
