@@ -73,6 +73,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AccessRecordDataForExcel.xsl" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -83,10 +84,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="main.aspx" />
-    <Content Include="PrivacyInfoDeletedPersonDataForExcel.xsl" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessRecordType.cs" />
     <Compile Include="ExcelHelper.cs" />
     <Compile Include="main.aspx.cs">
       <DependentUpon>main.aspx</DependentUpon>

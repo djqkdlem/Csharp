@@ -21,10 +21,10 @@ namespace Excel
             response.AddHeader("Content-Disposition", "Attachment;Filename=" + fileName);
             response.Charset = Charset;
             response.Buffer = buffer;
-            //System.Xml.XmlDataDocument xdd = new System.Xml.XmlDataDocument(reportDataSet);
-            //System.Xml.Xsl.XslCompiledTransform xct = new System.Xml.Xsl.XslCompiledTransform();
-            //xct.Load(xsltFilePath);
-            //xct.Transform(xdd, null, response.OutputStream);
+            System.Xml.XmlDataDocument xdd = new System.Xml.XmlDataDocument(reportDataSet);
+            System.Xml.Xsl.XslCompiledTransform xct = new System.Xml.Xsl.XslCompiledTransform();
+            xct.Load(xsltFilePath);
+            xct.Transform(xdd, null, response.OutputStream);
             response.End();
         }
     }

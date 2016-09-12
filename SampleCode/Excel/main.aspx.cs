@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Web.UI;
 
@@ -6,28 +7,60 @@ namespace Excel
 {
     public partial class main : System.Web.UI.Page
     {
+        private List<AccessRecordType> accessRecordList = new List<AccessRecordType>()
+        {
+          new AccessRecordType{ RowNum = "1", SystemName = "메일링", UserName = "BJW", UserID = "BJW", ActionUrl = "www.ABC.com", ActionName = "Download", ActionStateText = "다운", PersonalInformationYN = "Y", ActionDateTime = "2016.09.12" },
+        new AccessRecordType{ RowNum = "2", SystemName = "모니터링", UserName = "BJW", UserID = "BJW", ActionUrl = "www.ABC.com", ActionName = "Download", ActionStateText = "다운", PersonalInformationYN = "Y", ActionDateTime = "2016.09.12" },
+        new AccessRecordType{ RowNum = "3", SystemName = "웹", UserName = "BJW", UserID = "BJW", ActionUrl = "www.ABC.com", ActionName = "Download", ActionStateText = "다운", PersonalInformationYN = "Y", ActionDateTime = "2016.09.12" },
+        new AccessRecordType{ RowNum = "4", SystemName = "포탈", UserName = "BJW", UserID = "BJW", ActionUrl = "www.ABC.com", ActionName = "Download", ActionStateText = "다운", PersonalInformationYN = "Y", ActionDateTime = "2016.09.12" }
+             };
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                BindList();
+            }
 
+        }
+        private void BindList()
+        {
+            this.rptAccessRecordList.DataSource = accessRecordList;
+            this.rptAccessRecordList.DataBind();
+        }
+
+        protected void btnExcelDownload_Click(object sender, EventArgs e)
+        {
             DataSet ds = new DataSet();
 
-            //using (HandlingPersonBiz biz = new HandlingPersonBiz())
-            //{
-            //    int totalCount = 0;
+            ds = ToDataSet(accessRecordList);
+            ExcelHelper.CreateExcelReport(Server.MapPath("AccessRecordDataForExcel.xsl"), ds, Page.Response, "AccessRecordInfo.xls", "", true);
+        }
 
-                //ds = biz.SelectHandlingPersonList(out totalCount, 1, 0, hdAccessYN.Value, hdSearchType.Value, hdSearchKeyword.Value, companyID, businessSegmentsID, deletedYN);
+        public static DataSet ToDataSet<T>(IList<T> list)
+        {
 
-            //ds
-                if (ds != null && ds.Tables.Count > 0)
+            Type elementType = typeof(T);
+            DataSet ds = new DataSet();
+            DataTable t = new DataTable();
+            ds.Tables.Add(t);
+
+            //add a column to table for each public property on T
+            foreach (var propInfo in elementType.GetProperties())
+            {
+                t.Columns.Add(propInfo.Name, propInfo.PropertyType);
+            }
+            //go through each property on T and add each value to the table
+            foreach (T item in list)
+            {
+                DataRow row = t.NewRow();
+                foreach (var propInfo in elementType.GetProperties())
                 {
-                    foreach (DataRow dr in ds.Tables[0].Rows)
-                    {
-                    dr["MobileTel"] = "ssssss";   /*CommonUtility.GetPrivateMobileTel(dr["MobileTel"]);*/
-                    }
+                    row[propInfo.Name] = propInfo.GetValue(item, null);
                 }
-
-                ExcelHelper.CreateExcelReport(Server.MapPath("PrivacyInfoDeletedPersonDataForExcel.xsl"), ds, Page.Response, "PrivacyInfoDeletedPersonList_" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".xls", "", true);
-            
+                //This line was missing:
+                t.Rows.Add(row);
+            }
+            return ds;
         }
     }
 }
