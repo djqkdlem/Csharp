@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<log4net  xsi:noNamespaceSchemaLocation="log4net.xsd"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!--파일로그-->
+  <appender name="FileAppender" type="log4net.Appender.RollingFileAppender"  >
+    <!--페이지 사용로그는 DB에서만 기록하자-->
+    <filter type="log4net.Filter.LoggerMatchFilter">
+      <loggerToMatch value="PageUsageLogger" />
+      <acceptOnMatch value="false" />
+    </filter>
+    <file type="log4net.Util.PatternString" value="C:/SKN_Log/SKN.PIMM.Web/log_%date{yyyyMMdd}.log" />
+    <appendToFile value="true" />
+    <rollingStyle value="Date" />
+    <datePattern value="yyyyMMdd" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date [%thread] %-5level %logger%newline  EmpID : %property{EmpID}%newline  UserID : %property{UserID}%newline  URL : %property{URL}%newline  ClientIP : %property{ClientIP}%newline  ClientUserAgent : %property{ClientUserAgent}%newline -> %message%newline %exception%newline" />
+    </layout>
+  </appender>
+
+  <!--이벤트로그-->
+  <appender name="EventLogAppender" type="log4net.Appender.EventLogAppender" >
+    <!--페이지 사용로그는 DB에서만 기록하자-->
+    <filter type="log4net.Filter.LoggerMatchFilter">
+      <loggerToMatch value="PageUsageLogger" />
+      <acceptOnMatch value="false" />
+    </filter>
+    <applicationName value="SKN.PIMM.Web" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date [%thread] %-5level %logger [%property{NDC}] %newline  EmpID : %property{EmpID}%newline   UserID : %property{UserID}%newline  URL : %property{URL}%newline  ClientIP : %property{ClientIP}%newline  ClientUserAgent : %property{ClientUserAgent}%newline -> %message%newline" />
+    </layout>
+  </appender>
+  
+  <!--일반 DB로그-->
+  <appender name="SQLAppender" type="log4net.Appender.AdoNetAppender">
+    <reconnectOnError value="true" />
+    <bufferSize value="1" />
+    <!--운영에서는 성능 향상을 위해 n개 이상으로 셋팅-->
+    <!--페이지 사용로그는 DB에서만 기록하자-->
+    <filter type="log4net.Filter.LoggerMatchFilter">
+      <loggerToMatch value="PageUsageLogger" />
+      <acceptOnMatch value="false" />
+    </filter>
+    <connectionType value="System.Data.SqlClient.SqlConnection, System.Data, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <!--운영서버ConnMonitoringDB-->
+    <!--<connectionString value="data source=206.219.24.58;initial catalog=SKN_MonitoringLog;integrated security=false;persist security info=True;User ID=appadmin;Password=skn20141101!" />-->
+    <!--개발서버ConnMonitoringDB-->
+    <connectionString value="data source=206.219.24.44;initial catalog=SKN_PIMM;integrated security=false;persist security info=True;User ID=appadmin;Password=skn20141101!" />
+    <!--로컬개발ConnMonitoringDB-->
+    <!--<connectionString value="data source=127.0.0.1,1433;initial catalog=SKN_MonitoringLog;integrated security=false;persist security info=True;User ID=sa;Password=dnjem!1" />-->
+    <commandText value="INSERT INTO tb_PimmCommonLog ([Thread],[Level],[Logger],[Message],[Exception],[EmpID],[UserID],[URL],[ClientIP],[ClientUserAgent],[ServerHost],[CreateDateTime]) VALUES (@thread, @log_level, @logger, @message, @exception, @EmpID, @UserID, @URL, @ClientIP, @ClientUserAgent, @ServerHost, @log_date)" />
+    <parameter>
+      <parameterName value="@thread" />
+      <dbType value="String" />
+      <size value="255" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%thread" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@log_level" />
+      <dbType value="String" />
+      <size value="50" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%level" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@logger" />
+      <dbType value="String" />
+      <size value="255" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%logger" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@message" />
+      <dbType value="String" />
+      <size value="4000" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%message" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@exception" />
+      <dbType value="String" />
+      <size value="4000" />
+      <layout type="log4net.Layout.ExceptionLayout" />
+    </parameter>
+    <parameter>
+      <parameterName value="@EmpID" />
+      <dbType value="String" />
+      <size value="30" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%property{EmpID}" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@UserID" />
+      <dbType value="String" />
+      <size value="30" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%property{UserID}" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@URL" />
+      <dbType value="String" />
+      <size value="512" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%property{URL}" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@ClientIP" />
+      <dbType value="String" />
+      <size value="16" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%property{ClientIP}" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@ClientUserAgent" />
+      <dbType value="String" />
+      <size value="256" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%property{ClientUserAgent}" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@ServerHost" />
+      <dbType value="String" />
+      <size value="50" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%property{ServerHost}" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@log_date" />
+      <dbType value="DateTime" />
+      <layout type="log4net.Layout.RawTimeStampLayout" />
+    </parameter>
+  </appender>
+
+  <!--페이지 사용로그-->
+  <appender name="SQLPageUsageAppender" type="log4net.Appender.AdoNetAppender">
+    <reconnectOnError value="true" />
+    <bufferSize value="1" />
+    <!--운영에서는 성능 향상을 위해 n개 이상으로 셋팅-->
+    <!--페이지 사용로그는 이곳 DB에서만 기록하자-->
+    <filter type="log4net.Filter.LoggerMatchFilter">
+      <loggerToMatch value="PageUsageLogger" />
+      <acceptOnMatch value="true" />
+    </filter>
+    <connectionType value="System.Data.SqlClient.SqlConnection, System.Data, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <!--운영서버ConnMonitoringDB-->
+    <!--<connectionString value="data source=206.219.24.58;initial catalog=SKN_MonitoringLog;integrated security=false;persist security info=True;User ID=appadmin;Password=skn20141101!" />-->
+    <!--개발서버ConnMonitoringDB-->
+    <connectionString value="data source=206.219.24.44;initial catalog=SKN_PIMM;integrated security=false;persist security info=True;User ID=appadmin;Password=skn20141101!" />
+    <!--로컬개발ConnMonitoringDB-->
+    <!--<connectionString value="data source=127.0.0.1,1433;initial catalog=SKN_MonitoringLog;integrated security=false;persist security info=True;User ID=sa;Password=dnjem!1" />-->
+    <commandText value="INSERT INTO tb_PimmPageViewLog ([EmpID], [UserID] ,[URL] ,[ClientIP] ,[ClientUserAgent], [ServerHost], [CreateDateTime]) VALUES(@EmpID, @UserID, @URL, @ClientIP, @ClientUserAgent, @ServerHost, @log_date) " />
+    <parameter>
+      <parameterName value="@EmpID" />
+      <dbType value="String" />
+      <size value="30" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%property{EmpID}" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@UserID" />
+      <dbType value="String" />
+      <size value="30" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%property{UserID}" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@URL" />
+      <dbType value="String" />
+      <size value="512" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%property{URL}" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@ClientIP" />
+      <dbType value="String" />
+      <size value="16" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%property{ClientIP}" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@ClientUserAgent" />
+      <dbType value="String" />
+      <size value="256" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%property{ClientUserAgent}" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@ServerHost" />
+      <dbType value="String" />
+      <size value="50" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%property{ServerHost}" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@log_date" />
+      <dbType value="DateTime" />
+      <layout type="log4net.Layout.RawTimeStampLayout" />
+    </parameter>
+  </appender>
+
+
+  <!--로그인 로그-->
+  <appender name="SQLLoginLoggerAppender" type="log4net.Appender.AdoNetAppender">
+    <threshold value="ALL"/>
+    <lossy value="false"/>
+    <useTransactions value="false" />
+    <reconnectOnError value="true" />
+    <bufferSize value="1" />
+    <!--운영에서는 성능 향상을 위해 n개 이상으로 셋팅-->
+    <!--로그인 로그는 별도 테이블에 추가로 기록하자-->
+    <filter type="log4net.Filter.LoggerMatchFilter">
+      <loggerToMatch value="LoginLogger" />
+      <acceptOnMatch value="true" />
+    </filter>
+    <connectionType value="System.Data.SqlClient.SqlConnection, System.Data, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <!--운영서버ConnMonitoringDB-->
+    <!--<connectionString value="data source=206.219.24.58;initial catalog=SKN_Monitoring;integrated security=false;persist security info=True;User ID=appadmin;Password=skn20141101!" />-->
+    <!--개발서버ConnMonitoringDB-->
+    <!--직접 인서트용<connectionString value="data source=skn-acmdall1;initial catalog=SKN_MonitoringLog;integrated security=false;persist security info=True;User ID=appadmin;Password=skn20141101!" />-->
+    <connectionString value="data source=206.219.24.44;initial catalog=SKN_PIMM;integrated security=false;persist security info=True;User ID=appadmin;Password=skn20141101!" />
+    <!--로컬개발ConnMonitoringDB-->
+    <!--<connectionString value="data source=127.0.0.1,1433;initial catalog=SKN_Monitoring;integrated security=false;persist security info=True;User ID=sa;Password=dnjem!1" />-->
+    <!--<commandText value="INSERT INTO tb_MonitoringLoginHistory ([UserID] ,[URL] ,[ClientIP] ,[ClientUserAgent], [ServerHost], [CreateDateTime]) VALUES(@UserID, @URL, @ClientIP, @ClientUserAgent, @ServerHost, @log_date) " />-->
+    <commandType value="StoredProcedure" />
+    <commandText value="up_AccessInfo_Make" />
+    <parameter>
+      <parameterName value="@EmpID" />
+      <dbType value="String" />
+      <size value="30" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%property{EmpID}" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@UserID" />
+      <dbType value="String" />
+      <size value="30" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%property{UserID}" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@URL" />
+      <dbType value="String" />
+      <size value="512" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%property{URL}" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@ClientIP" />
+      <dbType value="String" />
+      <size value="16" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%property{ClientIP}" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@SessionID" />
+      <dbType value="String" />
+      <size value="20" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%property{SessionID}" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@ClientUserAgent" />
+      <dbType value="String" />
+      <size value="256" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%property{ClientUserAgent}" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@ServerHost" />
+      <dbType value="String" />
+      <size value="50" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%property{ServerHost}" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@log_date" />
+      <dbType value="DateTime" />
+      <layout type="log4net.Layout.RawTimeStampLayout" />
+    </parameter>
+  </appender>
+
+  <root>
+    <level value="ALL" />
+    <appender-ref ref="FileAppender" />
+    <appender-ref ref="EventLogAppender" />
+    <appender-ref ref="SQLAppender" />
+  </root>
+
+  <logger name="PageUsageLogger">
+    <level value="ALL" />
+    <appender-ref ref="SQLPageUsageAppender" />
+  </logger>
+
+  <logger name="LoginLogger">
+    <level value="ALL" />
+    <appender-ref ref="SQLLoginLoggerAppender" />
+  </logger>
+</log4net>
