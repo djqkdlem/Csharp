@@ -48,6 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="excel\example.xlsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="html\example.html" />
+    <Content Include="img\example.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

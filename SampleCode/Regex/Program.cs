@@ -1,5 +1,5 @@
 ﻿using System.Text.RegularExpressions;
-namespace Regex
+namespace Regexs
 {
     class Program
     {
@@ -74,9 +74,6 @@ foo@demo.net djqkdlem@gmail.com	bar.ba@test.co.uk www.demo.com http://foo.co.uk/
             //var test = " <test>kkkkk<test>";
             //test = Regex.Replace(test, "<", "&lt;");
             //System.Console.WriteLine(test);
-
-
-
         }
 
         //단일검출
@@ -141,7 +138,5 @@ foo@demo.net djqkdlem@gmail.com	bar.ba@test.co.uk www.demo.com http://foo.co.uk/
                 });
             }
         }
-
-
     }
 }

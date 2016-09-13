@@ -6,6 +6,7 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
+
     <script type="text/javascript">
         function fn_ExcelDownloadClick() {
             if (!confirm("엑셀 다운로드를 하시겠습니까?"))

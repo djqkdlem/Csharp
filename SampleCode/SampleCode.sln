@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Regex", "Regex\Regex.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lambda", "Lambda\Lambda.csproj", "{1D33854A-0442-449A-A275-193ABD557D69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repeater", "Repeater\Repeater.csproj", "{24175FA6-71FA-4823-8C01-DC19DA715DB2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasswordValidation", "PasswordValidation\PasswordValidation.csproj", "{4D9B862E-7297-4623-92FE-93AEDC323D2A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilePath", "FilePath\FilePath.csproj", "{538F0A3D-AEF3-4EC1-858B-C165D8C07F6B}"
@@ -21,13 +19,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excel", "Excel\Excel.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestService", "TestService\TestService.csproj", "{7FEC3A04-F594-4A1B-94CF-3FD6E2669767}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{7704FE21-B245-47F9-8643-0B893B0F9888}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAPI", "TestAPI\TestAPI.csproj", "{2756EF01-6823-4D72-AE43-BEF56D2EE85D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Angularjs", "Angularjs\Angularjs.csproj", "{8789EAE5-F93F-4E13-8FB0-EC882BEA5F49}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bootstrap", "Bootstrap\Bootstrap.csproj", "{60E4D086-FF7C-4F1C-85E4-104A25F90CCB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +41,6 @@ Global
 		{1D33854A-0442-449A-A275-193ABD557D69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D33854A-0442-449A-A275-193ABD557D69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D33854A-0442-449A-A275-193ABD557D69}.Release|Any CPU.Build.0 = Release|Any CPU
-		{24175FA6-71FA-4823-8C01-DC19DA715DB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24175FA6-71FA-4823-8C01-DC19DA715DB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24175FA6-71FA-4823-8C01-DC19DA715DB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{24175FA6-71FA-4823-8C01-DC19DA715DB2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4D9B862E-7297-4623-92FE-93AEDC323D2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4D9B862E-7297-4623-92FE-93AEDC323D2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D9B862E-7297-4623-92FE-93AEDC323D2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -71,10 +61,6 @@ Global
 		{7FEC3A04-F594-4A1B-94CF-3FD6E2669767}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FEC3A04-F594-4A1B-94CF-3FD6E2669767}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FEC3A04-F594-4A1B-94CF-3FD6E2669767}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7704FE21-B245-47F9-8643-0B893B0F9888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7704FE21-B245-47F9-8643-0B893B0F9888}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7704FE21-B245-47F9-8643-0B893B0F9888}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7704FE21-B245-47F9-8643-0B893B0F9888}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2756EF01-6823-4D72-AE43-BEF56D2EE85D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2756EF01-6823-4D72-AE43-BEF56D2EE85D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2756EF01-6823-4D72-AE43-BEF56D2EE85D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -83,10 +69,6 @@ Global
 		{8789EAE5-F93F-4E13-8FB0-EC882BEA5F49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8789EAE5-F93F-4E13-8FB0-EC882BEA5F49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8789EAE5-F93F-4E13-8FB0-EC882BEA5F49}.Release|Any CPU.Build.0 = Release|Any CPU
-		{60E4D086-FF7C-4F1C-85E4-104A25F90CCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{60E4D086-FF7C-4F1C-85E4-104A25F90CCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{60E4D086-FF7C-4F1C-85E4-104A25F90CCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{60E4D086-FF7C-4F1C-85E4-104A25F90CCB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
