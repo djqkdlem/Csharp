@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Angularjs", "Angularjs\Angu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testController", "testController\testController.csproj", "{263D6A6D-F852-441F-A158-DE98358ED1BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vuejs", "Vuejs\Vuejs.csproj", "{F5977918-BA27-467E-8B14-9121028DC4EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{263D6A6D-F852-441F-A158-DE98358ED1BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{263D6A6D-F852-441F-A158-DE98358ED1BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{263D6A6D-F852-441F-A158-DE98358ED1BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5977918-BA27-467E-8B14-9121028DC4EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5977918-BA27-467E-8B14-9121028DC4EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5977918-BA27-467E-8B14-9121028DC4EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5977918-BA27-467E-8B14-9121028DC4EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
